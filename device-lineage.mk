@@ -16,3 +16,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
    debug.sf.disable_backpressure=1 \
    video.accelerate.hw=1 \
    sys.use_fifo_ui=1
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
