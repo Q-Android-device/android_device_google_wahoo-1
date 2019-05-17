@@ -693,3 +693,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
    debug.sf.disable_backpressure=1 \
    video.accelerate.hw=1 \
    sys.use_fifo_ui=1
+
+# Custom Doze
+PRODUCT_PACKAGES += \
+    CustomDoze
