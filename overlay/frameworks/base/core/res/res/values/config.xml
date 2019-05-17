@@ -355,4 +355,7 @@
 
     <!-- Does device support ActiveEdge? -->
     <bool name="config_hasActiveEdge">true</bool>
+
+    <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
+    <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
 </resources>
