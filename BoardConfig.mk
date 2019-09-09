@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-# Allow Lineage config to override others
--include device/google/wahoo/BoardConfigLineage.mk
+# Allow Taimen config to override others
+-include device/google/wahoo/BoardConfigTaimen.mk
 
 TARGET_BOARD_PLATFORM := msm8998
 
