@@ -47,7 +47,7 @@ PRODUCT_COPY_FILES += \
 
 # Set the SVN for the targeted MR release
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.svn=32
+    ro.vendor.build.svn=34
 
 # Enforce privapp-permissions whitelist
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -115,7 +115,8 @@ PRODUCT_PACKAGES += \
     update_verifier
 
 PRODUCT_PACKAGES += \
-    bootctrl.msm8998
+    bootctrl.msm8998 \
+    bootctrl.msm8998.recovery
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cp_system_other_odex=1
@@ -133,14 +134,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-
-# Enable update engine sideloading by including the static version of the
-# boot_control HAL and its dependencies.
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.msm8998 \
-    libgptutils \
-    libz \
-    libcutils
 
 PRODUCT_PACKAGES += \
     update_engine_sideload
@@ -448,6 +441,7 @@ PRODUCT_PACKAGES += \
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl:64 \
+    android.hardware.boot@1.0-impl.recovery:64 \
     android.hardware.boot@1.0-service \
 
 # Vibrator HAL
@@ -648,8 +642,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Include vndk/vndk-sp/ll-ndk modules
 PRODUCT_PACKAGES += vndk_package
 
-PRODUCT_ENFORCE_RRO_TARGETS := framework-res
-
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
@@ -731,3 +723,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall
+
+# Enable missing props
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.opa.eligible_device=true \
+    ro.gfx.angle.supported=true
